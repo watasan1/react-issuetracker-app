@@ -1,93 +1,42 @@
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Separator } from "@/components/ui/separator";
-import { Switch } from "@/components/ui/switch";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { PageProvider, usePageContext } from "@/contexts/page-context";
+import { PageSidebar } from "@/components/page-sidebar";
+import { AddPageDialog } from "@/components/add-page-dialog";
 
-function App() {
+function NotionTodoAppInner() {
+  const { activePage } = usePageContext();
+
   return (
-    <div className="p-8 space-y-4">
-      <h1 className="text-2xl font-bold">shadcn/ui コンポーネント確認</h1>
+    <div className="min-h-screen bg-[#f0edd8] flex">
+      {/* 左サイドバー - ページナビゲーション */}
+      <PageSidebar />
 
-      <Button>ボタン</Button>
+      {/* メインコンテンツエリア */}
+      <div className="flex-1 flex flex-col ml-64 transition-all duration-300 pr-6">
+        {/* トップヘッダー */}
+        <div className="backdrop-blur-sm px-6 pt-12 pb-6 space-y-6">
+          <div className="text-7xl text-stone-500">{activePage.emoji}</div>
+          <h1 className="text-4xl font-bold text-stone-800">
+            {activePage.title}
+          </h1>
+        </div>
 
-      <div className="flex items-center space-x-2">
-        <Checkbox id="terms" />
-        <label htmlFor="terms">チェックボックス</label>
+        {/* スクロール可能なコンテンツエリア */}
+        <div className="flex-1 overflow-auto">この後のタスクで実装！</div>
       </div>
 
-      <Input placeholder="入力フィールド" />
-
-      <Textarea placeholder="テキストエリア" />
-
-      <div className="flex items-center space-x-2">
-        <Switch id="airplane-mode" />
-        <label htmlFor="airplane-mode">スイッチ</label>
-      </div>
-
-      <Separator />
-
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button variant="outline">ダイアログを開く</Button>
-        </DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>ダイアログ</DialogTitle>
-            <DialogDescription>これはダイアログの例です。</DialogDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
-
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline">ドロップダウン</Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem>項目1</DropdownMenuItem>
-          <DropdownMenuItem>項目2</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>列1</TableHead>
-            <TableHead>列2</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableRow>
-            <TableCell>データ1</TableCell>
-            <TableCell>データ2</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
+      {/* モーダルダイアログ群 */}
+      <AddPageDialog />
     </div>
   );
 }
 
-export default App;
+/**
+ * アプリケーションのエントリーポイント
+ */
+export default function NotionTodoApp() {
+  return (
+    <PageProvider>
+      <NotionTodoAppInner />
+    </PageProvider>
+  );
+}
