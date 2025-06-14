@@ -1,35 +1,93 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Separator } from "@/components/ui/separator";
+import { Switch } from "@/components/ui/switch";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="p-8 space-y-4">
+      <h1 className="text-2xl font-bold">shadcn/ui コンポーネント確認</h1>
+
+      <Button>ボタン</Button>
+
+      <div className="flex items-center space-x-2">
+        <Checkbox id="terms" />
+        <label htmlFor="terms">チェックボックス</label>
       </div>
-      <h1 className="text-5xl text-blue-500">Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+
+      <Input placeholder="入力フィールド" />
+
+      <Textarea placeholder="テキストエリア" />
+
+      <div className="flex items-center space-x-2">
+        <Switch id="airplane-mode" />
+        <label htmlFor="airplane-mode">スイッチ</label>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      <Separator />
+
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="outline">ダイアログを開く</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>ダイアログ</DialogTitle>
+            <DialogDescription>これはダイアログの例です。</DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline">ドロップダウン</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuItem>項目1</DropdownMenuItem>
+          <DropdownMenuItem>項目2</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>列1</TableHead>
+            <TableHead>列2</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow>
+            <TableCell>データ1</TableCell>
+            <TableCell>データ2</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </div>
+  );
 }
 
-export default App
+export default App;
