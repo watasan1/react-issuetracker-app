@@ -1,6 +1,7 @@
 import { PageProvider, usePageContext } from "@/contexts/page-context";
 import { PageSidebar } from "@/components/page-sidebar";
 import { AddPageDialog } from "@/components/add-page-dialog";
+import { IdeaBlocks } from "@/components/idea-blocks";
 
 function NotionTodoAppInner() {
   const { activePage } = usePageContext();
@@ -21,7 +22,10 @@ function NotionTodoAppInner() {
         </div>
 
         {/* スクロール可能なコンテンツエリア */}
-        <div className="flex-1 overflow-auto">この後のタスクで実装！</div>
+        <div className="flex-1 overflow-auto">
+          {/* アイデアブロックセクション */}
+          <IdeaBlocks />
+        </div>
       </div>
 
       {/* モーダルダイアログ群 */}
