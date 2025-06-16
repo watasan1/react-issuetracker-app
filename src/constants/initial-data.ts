@@ -1,3 +1,30 @@
+// initial-data.ts
+
+export type Page = {
+  id: string;
+  title: string;
+  isActive: boolean;
+  category: string;
+  emoji: string;
+};
+
+export type Idea = {
+  id: string;
+  text: string;
+  createdAt: Date;
+  category: string;
+};
+
+export type Todo = {
+  id: string;
+  title: string;
+  description: string;
+  completed: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+  category: string;
+};
+
 export const INITIAL_PAGES: Page[] = [
   { id: "1", title: "全般", isActive: true, category: "general", emoji: "✅" },
   {
