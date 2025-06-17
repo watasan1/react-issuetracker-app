@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useImmer } from "use-immer";
-import type { Idea } from "@/types";
-import { INITIAL_IDEAS } from "@/constants/initial-data";
+import { INITIAL_IDEAS } from '@/constants/initial-data';
+import { useImmer } from 'use-immer';
+import type { Idea } from '@/types';
+import { useState } from 'react';
 
 /**
  * アイデア管理カスタムフックの戻り値の型
@@ -18,7 +18,7 @@ interface UseIdeasReturn {
   moveIdea: (
     fromIndex: number,
     toIndex: number,
-    activeCategory: string
+    activeCategory: string,
   ) => void;
   getFilteredIdeas: (activeCategory: string) => Idea[];
 }
@@ -31,7 +31,7 @@ export function useIdeasImmer(): UseIdeasReturn {
   const [ideas, updateIdeas] = useImmer<Idea[]>(INITIAL_IDEAS);
 
   // ドラッグ＆ドロップ機能用のUI状態
-  const [newIdeaText, setNewIdeaText] = useState("");
+  const [newIdeaText, setNewIdeaText] = useState('');
   const [draggedIdea, setDraggedIdea] = useState<string | null>(null);
 
   /**
@@ -47,7 +47,7 @@ export function useIdeasImmer(): UseIdeasReturn {
           category,
         });
       });
-      setNewIdeaText("");
+      setNewIdeaText('');
     }
   };
 
@@ -81,12 +81,12 @@ export function useIdeasImmer(): UseIdeasReturn {
   const moveIdea = (
     fromIndex: number,
     toIndex: number,
-    activeCategory: string
+    activeCategory: string,
   ) => {
     updateIdeas((draft) => {
       // 現在のフィルタリング状態でのアイデアを取得
       const filteredIdeas = draft.filter((idea) =>
-        activeCategory === "general" ? true : idea.category === activeCategory
+        activeCategory === 'general' ? true : idea.category === activeCategory,
       );
 
       // インデックスが有効かチェック
@@ -99,7 +99,7 @@ export function useIdeasImmer(): UseIdeasReturn {
         return;
       }
 
-      if (activeCategory === "general") {
+      if (activeCategory === 'general') {
         // generalカテゴリの場合、全体の並び順を変更
         const [movedIdea] = draft.splice(fromIndex, 1);
         draft.splice(toIndex, 0, movedIdea);
@@ -109,7 +109,7 @@ export function useIdeasImmer(): UseIdeasReturn {
 
         // 元の配列から移動するアイデアを削除
         const originalFromIndex = draft.findIndex(
-          (idea) => idea.id === movedIdea.id
+          (idea) => idea.id === movedIdea.id,
         );
         if (originalFromIndex === -1) return;
 
@@ -120,13 +120,13 @@ export function useIdeasImmer(): UseIdeasReturn {
         if (toIndex > 0) {
           const targetIdea = filteredIdeas[toIndex];
           const targetOriginalIndex = draft.findIndex(
-            (idea) => idea.id === targetIdea.id
+            (idea) => idea.id === targetIdea.id,
           );
           insertIndex = targetOriginalIndex + (fromIndex < toIndex ? 1 : 0);
         } else {
           // 先頭に挿入する場合、同じカテゴリの最初のアイデアの前に挿入
           const firstCategoryIndex = draft.findIndex(
-            (idea) => idea.category === activeCategory
+            (idea) => idea.category === activeCategory,
           );
           insertIndex =
             firstCategoryIndex !== -1 ? firstCategoryIndex : draft.length;
@@ -143,7 +143,7 @@ export function useIdeasImmer(): UseIdeasReturn {
    */
   const getFilteredIdeas = (activeCategory: string): Idea[] => {
     return ideas.filter((idea) =>
-      activeCategory === "general" ? true : idea.category === activeCategory
+      activeCategory === 'general' ? true : idea.category === activeCategory,
     );
   };
 

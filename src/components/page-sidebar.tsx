@@ -1,5 +1,5 @@
-import { Plus, X } from "lucide-react";
-import { usePageContext } from "@/contexts/page-context";
+import { usePageContext } from '@/contexts/page-context';
+import { Plus, X } from 'lucide-react';
 
 export function PageSidebar() {
   const { pages, setActivePage, deletePage, setIsAddPageDialogOpen } =
@@ -26,8 +26,8 @@ export function PageSidebar() {
                   onClick={() => setActivePage(page.id)}
                   className={`flex-1 flex items-center px-2 py-2 text-sm rounded-md transition-colors ${
                     page.isActive
-                      ? "bg-stone-400/20 text-stone-800 font-medium shadow-sm"
-                      : "text-stone-700 hover:bg-stone-400/20 hover:text-stone-800"
+                      ? 'bg-stone-400/20 text-stone-800 font-medium shadow-sm'
+                      : 'text-stone-700 hover:bg-stone-400/20 hover:text-stone-800'
                   }`}
                 >
                   <span className="mr-3 text-base">{page.emoji}</span>

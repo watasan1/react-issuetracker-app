@@ -1,15 +1,15 @@
-import { Plus, Trash2, GripVertical, FileText } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Checkbox } from "@/components/ui/checkbox";
-import { useIdeasImmer } from "@/hooks/use-ideas-immer";
-import { usePageContext } from "@/contexts/page-context";
+} from '@/components/ui/dropdown-menu';
+import { Plus, Trash2, GripVertical, FileText } from 'lucide-react';
+import { usePageContext } from '@/contexts/page-context';
+import { useIdeasImmer } from '@/hooks/use-ideas-immer';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 export function IdeaBlocks() {
   const { pages, activePage } = usePageContext();
@@ -36,7 +36,7 @@ export function IdeaBlocks() {
    * Enterキーでのアイデア追加を可能にする
    */
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       handleAddIdea();
     }
   };
@@ -134,7 +134,7 @@ export function IdeaBlocks() {
                           onClick={(e) => e.stopPropagation()}
                         >
                           {pages.find((p) => p.category === idea.category)
-                            ?.emoji || "📝"}
+                            ?.emoji || '📝'}
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent

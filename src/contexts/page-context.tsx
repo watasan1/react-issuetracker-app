@@ -1,7 +1,7 @@
-import type { ReactNode } from "react";
-import { createContext, useContext, useState } from "react";
-import type { Page } from "@/types";
-import { INITIAL_PAGES } from "@/constants/initial-data";
+import { createContext, useContext, useState } from 'react';
+import { INITIAL_PAGES } from '@/constants/initial-data';
+import type { ReactNode } from 'react';
+import type { Page } from '@/types';
 
 interface PageContextType {
   pages: Page[];
@@ -26,8 +26,8 @@ interface PageProviderProps {
 
 export function PageProvider({ children }: PageProviderProps) {
   const [pages, setPages] = useState<Page[]>(INITIAL_PAGES);
-  const [newPageTitle, setNewPageTitle] = useState("");
-  const [newPageEmoji, setNewPageEmoji] = useState("");
+  const [newPageTitle, setNewPageTitle] = useState('');
+  const [newPageEmoji, setNewPageEmoji] = useState('');
   const [isAddPageDialogOpen, setIsAddPageDialogOpen] = useState(false);
 
   // 現在アクティブなページを取得
@@ -43,11 +43,11 @@ export function PageProvider({ children }: PageProviderProps) {
         title: title.trim(),
         isActive: false,
         category: `page_${Date.now()}`,
-        emoji: emoji.trim() || "📝",
+        emoji: emoji.trim() || '📝',
       };
       setPages((prev) => [...prev, newPage]);
-      setNewPageTitle("");
-      setNewPageEmoji("");
+      setNewPageTitle('');
+      setNewPageEmoji('');
       setIsAddPageDialogOpen(false);
     }
   };
@@ -60,7 +60,7 @@ export function PageProvider({ children }: PageProviderProps) {
       prev.map((page) => ({
         ...page,
         isActive: page.id === pageId,
-      }))
+      })),
     );
   };
 
@@ -104,7 +104,7 @@ export function PageProvider({ children }: PageProviderProps) {
 export function usePageContext() {
   const context = useContext(PageContext);
   if (context === undefined) {
-    throw new Error("usePageContext must be used within a PageProvider");
+    throw new Error('usePageContext must be used within a PageProvider');
   }
   return context;
 }

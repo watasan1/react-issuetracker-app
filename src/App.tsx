@@ -1,10 +1,10 @@
-import { PageProvider, usePageContext } from "@/contexts/page-context";
-import { PageSidebar } from "@/components/page-sidebar";
-import { AddPageDialog } from "@/components/add-page-dialog";
-import { IdeaBlocks } from "@/components/idea-blocks";
-import { useTodoStore } from "@/stores/todo-store";
-import { TodoDatabase } from "@/components/todo-database";
-import { TodoEditSidebar } from "@/components/todo-edit-sidebar";
+import { PageProvider, usePageContext } from '@/contexts/page-context';
+import { TodoEditSidebar } from '@/components/todo-edit-sidebar';
+import { AddPageDialog } from '@/components/add-page-dialog';
+import { TodoDatabase } from '@/components/todo-database';
+import { PageSidebar } from '@/components/page-sidebar';
+import { IdeaBlocks } from '@/components/idea-blocks';
+import { useTodoStore } from '@/stores/todo-store';
 
 function NotionTodoAppInner() {
   const { activePage } = usePageContext();
@@ -17,7 +17,7 @@ function NotionTodoAppInner() {
 
       <div
         className={`flex-1 flex flex-col ml-64 transition-all duration-300 ${
-          sidebarOpen ? "mr-96" : "pr-6"
+          sidebarOpen ? 'mr-96' : 'pr-6'
         }`}
       >
         {/* トップヘッダー */}

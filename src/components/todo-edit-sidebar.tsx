@@ -1,17 +1,17 @@
-import { X, Calendar, MoreHorizontal } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Switch } from "@/components/ui/switch";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Separator } from "@/components/ui/separator";
-import { useTodoStore } from "@/stores/todo-store";
-import { usePageContext } from "@/contexts/page-context";
+} from '@/components/ui/dropdown-menu';
+import { X, Calendar, MoreHorizontal } from 'lucide-react';
+import { usePageContext } from '@/contexts/page-context';
+import { Separator } from '@/components/ui/separator';
+import { Textarea } from '@/components/ui/textarea';
+import { useTodoStore } from '@/stores/todo-store';
+import { Switch } from '@/components/ui/switch';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 export function TodoEditSidebar() {
   const { pages } = usePageContext();
@@ -90,11 +90,11 @@ export function TodoEditSidebar() {
                   <div className="flex items-center space-x-2">
                     <span>
                       {pages.find((p) => p.category === editingTodo.category)
-                        ?.emoji || "📝"}
+                        ?.emoji || '📝'}
                     </span>
                     <span>
                       {pages.find((p) => p.category === editingTodo.category)
-                        ?.title || "不明なカテゴリ"}
+                        ?.title || '不明なカテゴリ'}
                     </span>
                   </div>
                   <MoreHorizontal className="w-4 h-4" />

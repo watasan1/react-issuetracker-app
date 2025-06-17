@@ -1,6 +1,9 @@
-import { Plus, Trash2, Edit3, Check, MoreHorizontal } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import {
   Table,
   TableBody,
@@ -8,16 +11,13 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { Switch } from "@/components/ui/switch";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useTodoStore } from "@/stores/todo-store";
-import { usePageContext } from "@/contexts/page-context";
+} from '@/components/ui/table';
+import { Plus, Trash2, Edit3, Check, MoreHorizontal } from 'lucide-react';
+import { usePageContext } from '@/contexts/page-context';
+import { useTodoStore } from '@/stores/todo-store';
+import { Switch } from '@/components/ui/switch';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 export function TodoDatabase() {
   const { activePage } = usePageContext();
@@ -42,7 +42,7 @@ export function TodoDatabase() {
    * Enterキーでの新規Todo追加を可能にする
    */
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       handleAddTodo();
     }
   };
@@ -112,8 +112,8 @@ export function TodoDatabase() {
                           <p
                             className={`font-medium ${
                               todo.completed
-                                ? "line-through text-stone-500"
-                                : "text-stone-800"
+                                ? 'line-through text-stone-500'
+                                : 'text-stone-800'
                             }`}
                           >
                             {todo.title}

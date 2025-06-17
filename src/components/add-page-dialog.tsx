@@ -1,13 +1,13 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { usePageContext } from "@/contexts/page-context";
+} from '@/components/ui/dialog';
+import { usePageContext } from '@/contexts/page-context';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import React from 'react';
 
 export function AddPageDialog() {
   const {
@@ -28,7 +28,7 @@ export function AddPageDialog() {
    * Enterキーでのページ作成を可能にする
    */
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       handleAddPage();
     }
   };
